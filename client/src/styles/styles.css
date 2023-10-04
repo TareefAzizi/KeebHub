@@ -1,0 +1,170 @@
+:root {
+  /* Primary colors */
+  --color-light-yellow: #f7f5e6; /* Very light yellow */
+  --color-dark-blue: #333a56; /* Dark blue */
+  --color-mid-blue: #52658f; /* Medium blue */
+  --color-light-gray: #e8e8e8; /* Light gray */
+
+  /* Earthy Tones */
+  --color-light-beige: #f5f1e8;
+  --color-dark-brown: #4b3f2f;
+  --color-mid-brown: #9a7d5e;
+  --color-light-gray: #e0e0e0;
+
+  /* Oceanic Tones */
+  --color-light-aqua: #e6f7f5;
+  --color-dark-teal: #2f4b4b;
+  --color-mid-teal: #5e9a7d;
+
+  /* Sunset Tones */
+  --color-light-peach: #f7eae6;
+  --color-dark-orange: #563333;
+  --color-mid-coral: #8f5c5c;
+
+  /* Forest Tones */
+  --color-light-green: #e6f7e6;
+  --color-dark-green: #33563a;
+  --color-mid-green: #5c8f5e;
+
+  /* Sky Tones */
+  --color-light-lavender: #eae6f7;
+  --color-dark-indigo: #333456;
+  --color-mid-periwinkle: #5c5e8f;
+
+  /* Autumn Tones */
+  --color-light-apricot: #f7f0e6;
+  --color-dark-maroon: #563a33;
+  --color-mid-rust: #8f5e52;
+
+  /* Pastel Tones */
+  --color-pastel-blue: #B0C4DE;
+  --color-pastel-green: #98FB98;
+  --color-pastel-yellow: #FFEFCD;
+  --color-pastel-pink: #FFC0CB;
+  --color-pastel-purple: #BDB0D0;
+
+  /* Vibrant Tones */
+  --color-vibrant-red: #FF3B30;
+  --color-vibrant-blue: #007AFF;
+  --color-vibrant-green: #4CD964;
+  --color-vibrant-yellow: #FFCC00;
+  --color-vibrant-purple: #AF52DE;
+
+  /* Jewel Tones */
+  --color-jewel-ruby: #9B111E;
+  --color-jewel-emerald: #50C878;
+  --color-jewel-sapphire: #0F52BA;
+  --color-jewel-topaz: #FFC87C;
+  --color-jewel-amethyst: #9966CC;
+
+  /* Muted Tones */
+  --color-muted-rose: #C48E91;
+  --color-muted-moss: #708D81;
+  --color-muted-sand: #CABAA0;
+  --color-muted-denim: #63707C;
+  --color-muted-lilac: #9C8AA5;
+
+  /* Monochromatic Tones (based on the dark blue in your primary colors) */
+  --color-dark-blue-lighter: #4C5079;
+  --color-dark-blue-light: #666A9C;
+  --color-dark-blue-dark: #1A1D3A;
+
+/* Icy Tones */
+--color-icy-white: #E6F0F7;
+--color-icy-blue: #5E99A7;
+--color-icy-navy: #333A4B;
+--color-icy-aqua: #5EC4C4;
+
+/* Tropical Tones */
+--color-tropical-sky: #5EC2FF;
+--color-tropical-sea: #1E8679;
+--color-tropical-sand: #FFE0A7;
+--color-tropical-palm: #5E7D4C;
+
+/* Warm Tones */
+--color-warm-gold: #FFD700;
+--color-warm-sienna: #8F5E4C;
+--color-warm-brick: #8F3D3D;
+--color-warm-amber: #FFB732;
+
+/* Cool Tones */
+--color-cool-lilac: #8F6B99;
+--color-cool-azure: #5E89A7;
+--color-cool-mint: #87CABA;
+--color-cool-slate: #4C6379;
+
+/* Neutral Tones */
+--color-neutral-beige: #D9CAB0;
+--color-neutral-taupe: #8F8373;
+--color-neutral-charcoal: #4C4C4C;
+--color-neutral-cream: #F7F0E1;
+}
+
+
+
+/* navbar */
+.navbar{
+  background-color: var(--color-dark-blue-dark)
+
+}
+
+.navbar  ul li{
+  color: var(--color-purple);
+}
+
+.profile-icon{
+  border-radius: 50%;
+  max-height: 45px;
+  max-width: 45px;
+}
+
+
+
+
+/* hero section */
+
+.hero-screen{
+  background-color: var(--color-icy-white);
+}
+
+.main-hero-text{
+  font-family: 'Exo', sans-serif;
+
+}
+
+.unikorn-image{
+  height: 500px;
+  width: 600px;
+  border-radius: 10px;
+
+}
+
+
+/* blog */
+
+/* add new blog */
+.new-blog-page{
+  background-color: var(--color-pastel-blue);
+}
+
+
+
+/* register */
+.register-page{
+  background-color: var(--color-pastel-blue);
+}
+
+
+/* login */
+
+.login-page{
+  background-color: var(--color-pastel-blue);
+
+}
+
+
+/* profile page */
+
+.profile-page{
+  background-color: var(--color-pastel-blue);
+}
