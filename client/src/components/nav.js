@@ -32,15 +32,20 @@ export default function Nav() {
   }, []);
 
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-gray-800 p-6">
+    <nav className="flex items-center justify-between flex-wrap bg-gray-800 p-4">
+      {" "}
+      {/* Reduce padding */}
       <div className="flex items-center flex-shrink-0 text-white mr-6">
         <Link
           href="/"
           passHref
           className="font-semibold text-3xl tracking-tight hover:text-gray-300 no-underline"
         >
-          <span className="text-gray-700 shadow-sm">Keeb</span>
-          <span className="text-gray-700 shadow-sm">Hub</span>
+          <img
+            src="keebhublogoclearbg.png"
+            alt="KeebHub Logo"
+            className="h-32 w-auto"
+          />
         </Link>
       </div>
       <div className="block lg:hidden">
