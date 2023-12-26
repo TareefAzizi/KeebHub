@@ -1,5 +1,4 @@
 import { useSession, signOut } from "next-auth/react";
-import { useState, useEffect } from "react";
 import { useQuery } from "react-query";
 import { getLoggedUser, logout } from "@/pages/api/users";
 import { useRouter } from "next/router";
@@ -9,77 +8,112 @@ export default function Profile() {
   const { data: user, isLoading, isError } = useQuery("profile", getLoggedUser);
   const router = useRouter();
 
-  console.log(session?.token)
-
   const handleLogout = async () => {
     await logout();
     router.push("/");
-    if (typeof window !== "undefined") { // check to ensure this is run in the browser
+    if (typeof window !== "undefined") {
       window.location.reload();
     }
   };
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-600 to-blue-500 text-white text-2xl">
-        Loading...
-      </div>
-    );
+    return <LoadingComponent />;
   }
 
   if (isError || (!user && !session)) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-600 to-blue-500 text-white text-2xl">
-        You are not logged in.
-      </div>
-    );
+    return <ErrorComponent />;
   }
 
-  // if logged in locally
-  if (user) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-600 to-blue-500 flex items-center justify-center text-white">
-        <div className="text-center">
-          <h1 className="text-4xl mb-4 glow-text">Welcome, {user.username}!</h1>
-          <p className="text-2xl mb-8 glow-text">Email: {user.email}</p>
-          <button
-            onClick={handleLogout}
-            className="py-2 px-4 bg-red-600 hover:bg-red-500 focus:ring-red-500 focus:ring-offset-red-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
-          >
-            Logout
-          </button>
-        </div>
-        <style jsx>{`
-          .glow-text {
-            text-shadow: 0 0 10px #ff00c8, 0 0 15px #ff00c8, 0 0 20px #ff00c8,
-              0 0 25px #ff00c8, 0 0 30px #ff00c8;
-          }
-        `}</style>
+  return (
+    <div className="profile-container">
+      <div className="profile-content">
+        <h1>Welcome, {user ? user.username : session.user.name}!</h1>
+        <p>Email: {user ? user.email : session.user.email}</p>
+        <button onClick={user ? handleLogout : () => signOut()}>
+          Logout
+        </button>
       </div>
-    );
-  }
+      <style jsx>{`
+        .profile-container {
+          min-height: 100vh;
+          background: linear-gradient(to bottom right, #6a5acd, #836fff);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
 
-  // if logged in with Google
-  if (session) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-600 to-blue-500 flex items-center justify-center text-white">
-        <div className="text-center">
-          <h1 className="text-4xl mb-4 glow-text">Welcome, {session.user.name}!</h1>
-          <p className="text-2xl mb-8 glow-text">Email: {session.user.email}</p>
-          <button
-            onClick={() => signOut()}
-            className="py-2 px-4 bg-red-600 hover:bg-red-500 focus:ring-red-500 focus:ring-offset-red-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
-          >
-            Logout
-          </button>
-        </div>
-        <style jsx>{`
-          .glow-text {
-            text-shadow: 0 0 10px #ff00c8, 0 0 15px #ff00c8, 0 0 20px #ff00c8,
-              0 0 25px #ff00c8, 0 0 30px #ff00c8;
-          }
-        `}</style>
-      </div>
-    );
-  }
+        .profile-content {
+          text-align: center;
+          padding: 40px;
+          border-radius: 10px;
+          background: white;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+          color: #333;
+          margin-bottom: 15px;
+          font-size: 2.5rem;
+        }
+
+        p {
+          color: #555;
+          margin-bottom: 20px;
+          font-size: 1.25rem;
+        }
+
+        button {
+          padding: 10px 20px;
+          background-color: #4CAF50;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+          font-size: 1rem;
+          font-weight: bold;
+        }
+
+        button:hover {
+          background-color: #45a049;
+        }
+      `}</style>
+    </div>
+  );
+}
+
+function LoadingComponent() {
+  return (
+    <div className="loading">
+      Loading...
+      <style jsx>{`
+        .loading {
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 20px;
+          color: #5DADE2;
+        }
+      `}</style>
+    </div>
+  );
+}
+
+function ErrorComponent() {
+  return (
+    <div className="error">
+      You are not logged in.
+      <style jsx>{`
+        .error {
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 20px;
+          color: #E74C3C;
+        }
+      `}</style>
+    </div>
+  );
 }

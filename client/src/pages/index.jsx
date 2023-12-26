@@ -31,7 +31,7 @@ function Home() {
             <div className="mt-5">
               <Link href="/supportme">
                 <button className="px-6 py-3 text-lg text-white bg-indigo-500 rounded-full hover:bg-indigo-600 focus:outline-none">
-                  Support Us
+                  Follow Us
                 </button>
               </Link>
             </div>
